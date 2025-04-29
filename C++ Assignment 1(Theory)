@@ -1,0 +1,457 @@
+Q1: What is the fundamental difference between procedural and object-oriented programming paradigms? Provide a brief example to illustrate.
+
+Answer:
+Procedural programming and Object-Oriented Programming (OOP) are two ways of writing programs.
+
+Procedural programming focuses on writing functions that operate on data. The data is usually kept separate.
+
+OOP focuses on objects, which combine both data and functions.
+
+
+This makes OOP more powerful for building large and real-world programs.
+
+Example in C++:
+
+Procedural Style:
+
+#include <iostream>
+using namespace std;
+
+int add(int a, int b) {
+    return a + b;
+}
+
+int main() {
+    int result = add(3, 4);
+    cout << "Result: " << result;
+    return 0;
+}
+
+Object-Oriented Style:
+
+#include <iostream>
+using namespace std;
+
+class Calculator {
+public:
+    int add(int a, int b) {
+        return a + b;
+    }
+};
+
+int main() {
+    Calculator calc;
+    cout << "Result: " << calc.add(3, 4);
+    return 0;
+}
+
+
+---
+
+Q2: Define Object-Oriented Programming (OOP). What are its core characteristics?
+
+Answer:
+Object-Oriented Programming (OOP) is a programming style where we design the program using objects. These objects contain data (called attributes) and functions (called methods).
+
+Main characteristics of OOP:
+
+1. Encapsulation – Hiding the internal data and showing only needed information.
+
+
+2. Inheritance – One class can use features of another class.
+
+
+3. Polymorphism – Same function behaves differently in different situations.
+
+
+4. Abstraction – Showing only important details to the user and hiding complexity.
+
+
+
+OOP helps in writing clean, reusable, and maintainable code.
+
+
+---
+
+Q3: Explain the concept of "abstraction" within the context of OOP. Why is it important?
+
+Answer:
+Abstraction means hiding the complex parts of a program and only showing the necessary details.
+
+Think of it like using a mobile phone – you press buttons and use apps, but you don’t know or need to know how the internal circuits work.
+
+In C++, abstraction is achieved using classes and access specifiers (like private, public).
+
+Why abstraction is important:
+
+It makes code simpler and cleaner.
+
+It hides unwanted information.
+
+It allows focus on what an object does, not how it does it.
+
+
+Example:
+
+class Car {
+public:
+    void start() { cout << "Car started"; }  // user sees this
+private:
+    void igniteEngine() {}                   // hidden complexity
+};
+
+
+---
+
+Q4: What are the benefits of using OOP over procedural programming?
+
+Answer: OOP provides many benefits compared to procedural programming:
+
+1. Code Reusability – We can reuse code using inheritance.
+
+
+2. Data Security – Data is hidden using encapsulation.
+
+
+3. Easy Maintenance – Each class works as a separate unit, so changes are easier.
+
+
+4. Real-World Mapping – OOP is close to how we think about real things (like car, phone, etc.).
+
+
+5. Better Teamwork – Multiple programmers can work on different classes easily.
+
+
+
+In short, OOP helps in writing better-organized, secure, and flexible programs.
+
+
+---
+
+Q5: Give a real-world example of a problem that is well-suited to be solved using an OOP approach. Explain why.
+
+Answer:
+Let’s take a Banking System as an example.
+
+In a bank system, we have:
+
+Accounts
+
+Customers
+
+Transactions
+
+
+We can create classes for each:
+
+class Account {
+private:
+    int balance;
+public:
+    void deposit(int amount) { balance += amount; }
+    void withdraw(int amount) { balance -= amount; }
+};
+
+Why OOP fits well here:
+
+Each object (like Account) has its own data and actions.
+
+We can use inheritance to create different account types (e.g., Savings, Current).
+
+We can secure data using private.
+
+We can reuse and expand the system easily.
+
+Q6: Define the four key principles of OOP: Encapsulation, Inheritance, Polymorphism, and Abstraction.
+
+Answer:
+
+The 4 main principles of Object-Oriented Programming (OOP) are:
+
+1. Encapsulation:
+
+It means hiding data inside a class and only allowing access through methods (functions).
+
+Protects the data from being changed directly.
+
+
+
+2. Inheritance:
+
+One class (child) can inherit features (functions and variables) from another class (parent).
+
+Helps in code reuse.
+
+
+
+3. Polymorphism:
+
+A function or operator can behave in different ways depending on the situation.
+
+Two types: Function overloading and Function overriding.
+
+
+
+4. Abstraction:
+
+It means showing only essential details and hiding complex parts of the code.
+
+Makes the program simple and clear to the user.
+
+
+
+
+
+---
+
+Q7: Explain how encapsulation helps to protect data and create modular code. Give an example using a class and its members.
+
+Answer:
+
+Encapsulation means keeping the data safe inside a class and only letting users access or change it through public functions.
+
+It helps in modular programming: each class is like a mini-program.
+
+It keeps your data secure from unwanted access.
+
+
+Example in C++:
+
+#include <iostream>
+using namespace std;
+
+class Student {
+private:
+    int marks;  // hidden data
+
+public:
+    void setMarks(int m) {  // public function to set value
+        marks = m;
+    }
+
+    int getMarks() {  // public function to get value
+        return marks;
+    }
+};
+
+int main() {
+    Student s;
+    s.setMarks(90);
+    cout << "Marks: " << s.getMarks();
+    return 0;
+}
+
+Output:
+
+Marks: 90
+
+Why it's useful:
+
+marks is private, so no one can change it directly.
+
+Only set and get functions can access it. That’s encapsulation.
+
+
+
+---
+
+Q8: What is inheritance? How does it promote code reuse and maintainability? Provide a simple example using classes.
+
+Answer:
+
+Inheritance means a new class (child) can use the features of an existing class (parent).
+
+It avoids rewriting the same code.
+
+If you change something in the parent class, the child class automatically gets updated. This helps in maintaining the code easily.
+
+
+Example in C++:
+
+#include <iostream>
+using namespace std;
+
+class Animal {
+public:
+    void sound() {
+        cout << "Animal makes a sound" << endl;
+    }
+};
+
+class Dog : public Animal {  // Dog inherits from Animal
+public:
+    void bark() {
+        cout << "Dog barks" << endl;
+    }
+};
+
+int main() {
+    Dog d;
+    d.sound();  // inherited function
+    d.bark();   // Dog's own function
+    return 0;
+}
+
+Output:
+
+Animal makes a sound
+Dog barks
+
+Why it's useful:
+
+You don’t have to rewrite sound() in the Dog class.
+
+It makes the code reusable and organized.
+
+
+
+---
+
+Q9: Describe polymorphism. How does it contribute to flexibility and extensibility in software design? Give examples of function/operator overloading and function overriding.
+
+Answer:
+
+Polymorphism means "many forms". It allows the same function name to work in different ways.
+
+Types of Polymorphism:
+
+1. Function Overloading (Compile-time polymorphism):
+
+Same function name, different parameters.
+
+Happens in the same class.
+
+
+
+2. Function Overriding (Run-time polymorphism):
+
+A child class redefines a function from the parent class.
+
+Happens in inheritance.
+
+
+
+
+
+---
+
+Example of Function Overloading:
+
+#include <iostream>
+using namespace std;
+
+class Print {
+public:
+    void show(int a) {
+        cout << "Integer: " << a << endl;
+    }
+
+    void show(string s) {
+        cout << "String: " << s << endl;
+    }
+};
+
+int main() {
+    Print p;
+    p.show(100);
+    p.show("Hello");
+    return 0;
+}
+
+Output:
+
+Integer: 100
+String: Hello
+
+
+---
+
+Example of Function Overriding:
+
+#include <iostream>
+using namespace std;
+
+class Base {
+public:
+    void display() {
+        cout << "Base class" << endl;
+    }
+};
+
+class Derived : public Base {
+public:
+    void display() {  // overriding the base class function
+        cout << "Derived class" << endl;
+    }
+};
+
+int main() {
+    Derived d;
+    d.display();
+    return 0;
+}
+
+Output:
+
+Derived class
+
+Why it’s useful:
+
+Polymorphism helps make your program flexible and expandable.
+
+
+
+---
+
+Function Overloading and Function Overriding are both used to achieve polymorphism in C++, but they are very different. Function Overloading happens when two or more functions have the same name but different types or numbers of parameters in the same class. It allows us to perform similar tasks in different ways. For example:
+
+class Print {
+public:
+    void show(int a) {
+        cout << "Integer: " << a << endl;
+    }
+    void show(double b) {
+        cout << "Double: " << b << endl;
+    }
+};
+
+Output:
+
+Integer: 10  
+Double: 5.5
+
+Here, both show() functions are overloaded.
+
+
+---
+
+On the other hand, Function Overriding occurs when a derived (child) class defines a function with the same name and parameters as a function in the base (parent) class. This lets the child class change how the function works. For example:
+
+class Animal {
+public:
+    void sound() {
+        cout << "Animal makes a sound" << endl;
+    }
+};
+
+class Dog : public Animal {
+public:
+    void sound() {
+        cout << "Dog barks" << endl;
+    }
+};
+
+Output:
+
+Dog barks
+
+In this case, the sound() function in the Dog class overrides the sound() function of the Animal class.
+
+
+---
+
+In Summary:
+
+Overloading: Same function name, different parameters, same class.
+
+Overriding: Same function name and parameters, but in parent-child (inheritance) relationship.
