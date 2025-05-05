@@ -1,0 +1,94 @@
+
+1. What is the purpose of the main() function in a C++ program?
+🔹 It is the starting point of every C++ program.
+🔹 The computer runs the code inside main() first.
+
+ 2. Explain the significance of the return type of the main() function.
+🔹 The return type is usually int.
+🔹 return 0; means the program ran successfully.
+
+ 3. What are the two valid signatures of the main() function in C++?
+cpp
+Copy
+Edit
+int main()                        // used when no input is needed
+int main(int argc, char* argv[]) // used for command-line arguments
+ 4. What is function prototyping and why is it necessary in C++?
+🔹 A function prototype tells the compiler about a function before it's used.
+🔹 It helps the compiler understand the return type and parameters.
+
+ 5. How do you declare a function prototype for a function that returns an integer and takes two integers?
+cpp
+Copy
+Edit
+int add(int, int);
+ 6. What happens if a function is used before it is prototyped?
+🔹 The compiler gives an error because it doesn't know the function details.
+
+ 7. What is the difference between a declaration and a definition of a function?
+Declaration: Only tells the name and parameters (no code).
+
+Definition: Has the actual code of the function.
+
+Example:
+
+cpp
+Copy
+Edit
+int add(int, int);           // declaration
+int add(int a, int b) {      // definition
+    return a + b;
+}
+ 8. How do you call a simple function that takes no parameters and returns void?
+cpp
+Copy
+Edit
+void greet() {
+    cout << "Hello!";
+}
+
+int main() {
+    greet(); // calling the function
+}
+ 9. Explain the concept of "scope" in the context of functions.
+🔹 Scope means where a variable or function is visible/usable.
+🔹 A variable inside a function can’t be used outside it.
+
+ 10. What is call by reference in C++?
+🔹 It means passing the actual variable, not a copy.
+🔹 The function can change the original value.
+
+ 11. How does call by reference differ from call by value?
+Call by Value	Call by Reference
+Sends a copy	Sends the original
+No change	Can change value
+
+ 12. Example: Swap two integers using call by reference
+cpp
+Copy
+Edit
+void swap(int &a, int &b) {
+    int temp = a;
+    a = b;
+    b = temp;
+}
+
+int main() {
+    int x = 5, y = 10;
+    swap(x, y); // x becomes 10, y becomes 5
+}
+ 13. What is an inline function in C++?
+🔹 A small function where code is inserted directly where it is called.
+🔹 Saves time by avoiding function call overhead.
+
+ 14. How do inline functions improve performance?
+🔹 The function code is copied directly into the main program.
+🔹 It runs faster for small functions.
+
+ 15. Syntax for declaring an inline function
+cpp
+Copy
+Edit
+inline int square(int x) {
+    return x * x;
+}
