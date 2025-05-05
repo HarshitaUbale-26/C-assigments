@@ -1,0 +1,599 @@
+What is an object in C++?
+An object is a real instance of a class. It holds specific values and can perform actions using the functions defined in the class.
+Example:
+class Car {
+public:
+    int speed;
+    void drive() {
+        // driving action
+    }
+};
+
+Car myCar;  // 'myCar' is an object of the 'Car' class.
+2. What is a class in C++ and how does it differ from an object?
+A class is like a blueprint or template to create objects. It defines what data the object will hold (called attributes) and what actions it can perform (called methods). An object is an instance of a class with actual values.
+
+Example:
+class Car {
+public:
+    int speed;
+    void drive() {
+        // driving action
+    }
+};
+Car myCar;  // 'Car' is a class, 'myCar' is an object.
+3. Explain the concept of encapsulation with an example.
+Encapsulation is the concept of hiding the internal details of an object and only exposing what is necessary. This protects the object's data and makes it easier to manage.
+
+Example:
+class Car {
+private:
+    int speed;  // Encapsulation hides the speed data.
+public:
+    void setSpeed(int s) { speed = s; }  // Public method to modify speed.
+    int getSpeed() { return speed; }  // Public method to access speed.
+};
+4. How do you define a class in C++?
+You define a class using the class keyword, followed by the class name and its members (attributes and methods).
+
+Example:
+class Car {
+public:
+    int speed;
+    void drive() {
+        // driving action
+    }
+};
+5. Describe the syntax for creating an object of a class.
+To create an object, you simply use the class name followed by the object name.
+
+Example:
+Car myCar;  // Create an object of the 'Car' class.
+6. What are private members in a class and how are they accessed?
+Private members are variables or methods that can only be accessed within the class itself. They can't be accessed directly from outside the class.
+
+Example:
+class Car {
+private:
+    int speed;  // Private member
+public:
+    void setSpeed(int s) { speed = s; }  // Public method to access speed.
+};
+7. What are public members in a class and how are they accessed?
+Public members can be accessed from outside the class, using the object.
+
+Example:
+
+
+class Car {
+public:
+    int speed;  // Public member
+};
+Car myCar;
+myCar.speed = 100;  // Access the public member directly.
+8. Explain the significance of access specifiers in a class.
+Access specifiers (like public, private, and protected) control which parts of the class can be accessed outside the class. They are important for controlling data and ensuring safety.
+
+Public: Can be accessed from anywhere.
+
+Private: Can only be accessed within the class.
+
+Protected: Can be accessed within the class and derived classes.
+
+9. Example of a class with both private and public members:
+
+class Car {
+private:
+    int speed;  // Private
+public:
+    void setSpeed(int s) { speed = s; }  // Public method to modify speed.
+    int getSpeed() { return speed; }  // Public method to access speed.
+};
+10. How does data hiding work in C++?
+Data hiding is achieved by making the class members private, so they cannot be accessed directly from outside. Access is only allowed through public methods.
+
+11. What is a static data member in C++?
+A static data member is shared by all objects of a class. It belongs to the class itself, not to any individual object.
+
+Example:
+
+
+class MyClass {
+public:
+    static int count;  // Static member variable.
+};
+int MyClass::count = 0;  // Initialization of the static member.
+12. How do you declare and initialize a static data member?
+You declare it inside the class and initialize it outside the class.
+
+Example:
+
+
+class MyClass {
+public:
+    static int count;
+};
+int MyClass::count = 0;  // Initialization outside the class.
+13. What is a static function member in C++?
+A static function belongs to the class itself, not to any object. It can access only static members.
+
+Example:
+
+
+class MyClass {
+public:
+    static void display() { cout << "Static function"; }
+};
+14. How do static function members differ from regular function members?
+Static functions can only access static data members. Regular functions can access both static and non-static data members.
+
+15. Example of a class with static data and function members:
+
+class MyClass {
+public:
+    static int count;
+    static void increment() { count++; }
+};
+int MyClass::count = 0;
+16. What is a constructor in C++ and why is it important?
+A constructor is a special function used to initialize objects when they are created. It's important because it sets the initial state of the object.
+
+17. Explain the different types of constructors in C++:
+Default constructor: No parameters.
+
+Parameterized constructor: Takes parameters.
+
+Copy constructor: Creates an object by copying another object.
+
+18. What is a default constructor and when is it used?
+A default constructor is automatically called when an object is created without any arguments.
+
+Example:
+class MyClass {
+public:
+    MyClass() { cout << "Constructor called"; }  // Default constructor
+};
+MyClass obj;  // Calls the default constructor.
+19. How do parameterized constructors work?
+A parameterized constructor is used when you want to pass specific values to initialize an object.
+
+Example:
+class MyClass {
+public:
+    MyClass(int x) { cout << "Value is: " << x; }  // Parameterized constructor
+};
+MyClass obj(10);  // Passes 10 to the constructor.
+20. What is a copy constructor and what is its purpose?
+A copy constructor is used to create a new object as a copy of an existing object.
+
+Example:
+class MyClass {
+public:
+    int x;
+    MyClass(int val) { x = val; }
+    MyClass(const MyClass &obj) { x = obj.x; }  // Copy constructor
+};
+21. Explain the concept of constructor overloading.
+Constructor overloading means having multiple constructors with different parameter lists in the same class.
+
+Example:
+class MyClass {
+public:
+    MyClass() { cout << "Default constructor"; }
+    MyClass(int x) { cout << "Parameterized constructor with value: " << x; }
+};
+22. How does a constructor initializer list work?
+An initializer list allows you to initialize members directly when an object is created, instead of using the constructor body.
+
+Example:
+
+
+class MyClass {
+public:
+    int x;
+    MyClass(int val) : x(val) {}  // Initializer list
+};
+
+ What is a destructor in C++ and what is its purpose?
+A destructor is a special member function that is automatically called when an object goes out of scope or is explicitly deleted. Its purpose is to release any resources (like memory or file handles) that the object may have acquired during its lifetime.
+
+Example:
+
+cpp
+Copy
+Edit
+class MyClass {
+public:
+    MyClass() {
+        // Constructor: Allocate resources
+    }
+
+    ~MyClass() {
+        // Destructor: Release resources
+    }
+};
+24. How is a destructor declared and defined?
+A destructor is declared with the tilde (~) symbol followed by the class name. It doesn't take any parameters and doesn't return any value.
+
+Example:
+
+
+class MyClass {
+public:
+    ~MyClass() {
+        // Destructor code
+    }
+};
+25. What happens if a destructor is not explicitly defined in a class?
+If a destructor is not explicitly defined, the compiler provides a default destructor. This default destructor performs basic cleanup, but if your class allocates resources dynamically (like using new), you should define a custom destructor to release those resources.
+
+26. Explain the concept of automatic and dynamic storage duration in relation to destructors.
+Automatic storage duration: Objects are automatically created when they come into scope and destroyed when they go out of scope. Their destructors are called automatically.
+
+Dynamic storage duration: Objects are created using new and must be explicitly destroyed using delete. If you don't call delete, the destructor won't be called, leading to resource leaks.
+
+27. How do destructors differ from constructors?
+Constructor: Initializes an object when it's created.
+
+Destructor: Cleans up before an object is destroyed.
+
+28. What is operator overloading in C++ and why is it useful?
+Operator overloading allows you to define custom behavior for operators (like +, -, *, etc.) when they are used with objects of your class. It's useful for making your class objects behave more like built-in types.
+
+Example:
+
+
+class Complex {
+public:
+    int real, imag;
+
+    Complex operator + (const Complex& other) {
+        Complex temp;
+        temp.real = real + other.real;
+        temp.imag = imag + other.imag;
+        return temp;
+    }
+};
+29. Describe the syntax for overloading an operator.
+The syntax for overloading an operator is:
+
+
+return_type operator operator_symbol (parameter_list) {
+    // Function body
+}
+Example:
+
+
+Complex operator + (const Complex& other) {
+    // Implementation
+}
+30. Which operators can and cannot be overloaded in C++?
+Can be overloaded:
+
+Arithmetic operators (+, -, *, /)
+
+Comparison operators (==, !=, <, >)
+
+Assignment operators (=, +=, -=)
+
+Stream insertion/extraction (<<, >>)
+
+Cannot be overloaded:
+
+Scope resolution (::)
+
+Member access (., ->)
+
+Sizeof (sizeof)
+
+Typeid (typeid)
+
+31. Provide an example of overloading the "+" operator for a custom class.
+Example:
+
+
+class Complex {
+public:
+    int real, imag;
+
+    Complex operator + (const Complex& other) {
+        Complex temp;
+        temp.real = real + other.real;
+        temp.imag = imag + other.imag;
+        return temp;
+    }
+};
+32. Explain the concept of friend functions in the context of operator overloading.
+A friend function is a function that is not a member of a class but has access to its private and protected members. It's useful for operator overloading when the operator needs to access private members of the class.
+
+33. What is a friend function in C++ and how is it declared?
+A friend function is declared inside the class using the friend keyword.
+
+Example:
+
+
+class MyClass {
+    friend void myFriendFunction(MyClass& obj);
+};
+34. How do friend functions differ from member functions?
+Member functions: Belong to the class and can access all members of the class.
+
+Friend functions: Not members of the class but can access private and protected members.
+
+35. Explain the benefits and potential drawbacks of using friend functions.
+Benefits:
+
+Allows non-member functions to access private data.
+
+Useful for operator overloading and certain algorithms.
+
+Drawbacks:
+
+Breaks encapsulation to some extent.
+
+Can lead to tighter coupling between classes.
+
+36. What is inheritance in C++ and why is it important?
+Inheritance allows a class (derived class) to inherit properties and behaviors (methods) from another class (base class). It's important because it promotes code reuse and establishes a relationship between classes.
+
+Example:
+
+
+class Animal {
+public:
+    void eat() {
+        // Eating behavior
+    }
+};
+
+class Dog : public Animal {
+    // Dog-specific behaviors
+};
+37. Explain the different types of inheritance in C++.
+Single Inheritance: A class inherits from one base class.
+
+Multiple Inheritance: A class inherits from more than one base class.
+
+Multilevel Inheritance: A class inherits from a class that is already derived from another class.
+
+Hierarchical Inheritance: Multiple classes inherit from a single base class.
+
+Hybrid Inheritance: A combination of two or more types of inheritance.
+
+38. How do you implement single inheritance in C++?
+Single inheritance is implemented by using the : symbol to specify the base class.
+
+Example:
+class Base {
+    // Base class members
+};
+
+class Derived : public Base {
+    // Derived class members
+};
+39. What is multiple inheritance and how does it differ from single inheritance?
+Multiple inheritance allows a class to inherit from more than one base class.
+
+Example:
+class ClassA {
+    // ClassA members
+};
+
+class ClassB {
+    // ClassB members
+};
+
+class Derived : public ClassA, public ClassB {
+    // Derived class members
+};
+Difference from single inheritance: In single inheritance, a class inherits from only one base class, whereas in multiple inheritance, a class can inherit from multiple base classes.
+
+40. Describe hierarchical inheritance with an example.
+In hierarchical inheritance, multiple classes inherit from a single base class.
+
+Example:
+
+
+class Animal {
+    // Animal members
+};
+
+class Dog : public Animal {
+    // Dog-specific members
+};
+
+class Cat : public Animal {
+    // Cat-specific members
+};
+What is multilevel inheritance and how is it implemented in C++?
+Multilevel inheritance is a type of inheritance where a class is derived from another derived class, forming a chain of inheritance.
+
+Example:
+
+
+class Animal {
+public:
+    void eat() {
+        cout << "Eating..." << endl;
+    }
+};
+
+class Mammal : public Animal {
+public:
+    void walk() {
+        cout << "Walking..." << endl;
+    }
+};
+
+class Dog : public Mammal {
+public:
+    void bark() {
+        cout << "Barking..." << endl;
+    }
+};
+In this example, Dog inherits from Mammal, which in turn inherits from Animal. So, Dog has access to eat(), walk(), and bark() methods.
+
+42. Explain the concept of hybrid inheritance.
+Hybrid inheritance is a combination of two or more types of inheritance. For example, it can combine multilevel and multiple inheritance.
+
+Example:
+class Person {
+public:
+    void display() {
+        cout << "Person details..." << endl;
+    }
+};
+
+class Employee : public Person {
+public:
+    void work() {
+        cout << "Working..." << endl;
+    }
+};
+
+class Student : public Person {
+public:
+    void study() {
+        cout << "Studying..." << endl;
+    }
+};
+
+class Intern : public Employee, public Student {
+public:
+    void internDetails() {
+        cout << "Interning..." << endl;
+    }
+};
+Here, Intern inherits from both Employee and Student, which in turn inherit from Person. This is an example of hybrid inheritance.
+
+43. What are access modifiers in C++ and what are the different types?
+Access modifiers define the accessibility of members (variables and functions) of a class.
+
+public: Members are accessible from outside the class.
+
+private: Members are accessible only within the class.
+
+protected: Members are accessible within the class and by derived classes.
+
+44. How do public, private, and protected access modifiers affect inheritance?
+public inheritance: Public and protected members of the base class become public and protected members of the derived class, respectively.
+
+private inheritance: All members of the base class become private members of the derived class.
+
+protected inheritance: Public and protected members of the base class become protected members of the derived class.
+
+45. Explain how access modifiers control member accessibility in derived classes.
+Access modifiers control how members of a base class can be accessed in a derived class:
+
+public: Members are accessible in the derived class and outside.
+
+protected: Members are accessible in the derived class but not outside.
+
+private: Members are not accessible in the derived class or outside.
+
+46. What is function overriding in the context of inheritance?
+Function overriding occurs when a derived class provides a specific implementation of a function that is already defined in its base class.
+
+Example:
+
+
+class Animal {
+public:
+    virtual void sound() {
+        cout << "Animal sound" << endl;
+    }
+};
+
+class Dog : public Animal {
+public:
+    void sound() override {
+        cout << "Bark" << endl;
+    }
+};
+Here, Dog overrides the sound() function of Animal.
+
+47. How do you override a base class function in a derived class?
+To override a base class function:
+
+Declare the base class function as virtual.
+
+Define the function in the derived class with the same signature.
+
+Use the override keyword in the derived class (optional but recommended).
+
+48. Explain the use of the "virtual" keyword in function overriding.
+The virtual keyword tells the compiler to support dynamic (run-time) polymorphism. It ensures that the correct function is called for an object, regardless of the type of reference (or pointer) used for the function call.
+
+49. What is the significance of the "override" specifier in C++11 and later?
+The override specifier indicates that a function is intended to override a virtual function in a base class. It helps the compiler catch errors if the function does not actually override any base class function.
+
+50. What is a virtual base class in C++ and why is it used?
+A virtual base class is a base class that is shared among multiple derived classes. It is used to prevent multiple instances of the same base class when using multiple inheritance.
+
+51. How do you declare and implement a virtual base class?
+To declare a virtual base class, use the virtual keyword in the inheritance list.
+
+Example:
+class A {
+public:
+    void display() {
+        cout << "Class A" << endl;
+    }
+};
+
+class B : virtual public A {
+public:
+    void display() {
+        cout << "Class B" << endl;
+    }
+};
+
+class C : virtual public A {
+public:
+    void display() {
+        cout << "Class C" << endl;
+    }
+};
+
+class D : public B, public C {
+public:
+    void display() {
+        cout << "Class D" << endl;
+    }
+};
+Here, A is a virtual base class for both B and C.
+
+52. Explain the role of virtual base classes in resolving ambiguity in multiple inheritance.
+In multiple inheritance, if two derived classes inherit from the same base class, there can be ambiguity. Virtual base classes ensure that only one instance of the base class is shared among all derived classes, resolving this ambiguity.
+
+53. Provide an example of using a virtual base class to avoid the diamond problem in inheritance.
+Example:
+
+
+class A {
+public:
+    void display() {
+        cout << "Class A" << endl;
+    }
+};
+
+class B : virtual public A {
+public:
+    void display() {
+        cout << "Class B" << endl;
+    }
+};
+
+class C : virtual public A {
+public:
+    void display() {
+        cout << "Class C" << endl;
+    }
+};
+
+class D : public B, public C {
+public:
+    void display() {
+        cout << "Class D" << endl;
+    }
+};
