@@ -1,0 +1,1019 @@
+// Q21: Demonstrate the use of static_cast by converting an int to a double and vice versa
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a = 10;
+    double b = static_cast<double>(a);
+    cout << "Integer to double: " << b << endl;
+
+    b = 5.75;
+    a = static_cast<int>(b);
+    cout << "Double to integer: " << a << endl;
+
+    return 0;
+}
+
+/* Output:
+Integer to double: 10
+Double to integer: 5
+*/
+
+// Q22: Demonstrate the use of dynamic_cast for safe downcasting in a polymorphic class hierarchy
+#include <iostream>
+using namespace std;
+
+class Base {
+public:
+    virtual void speak() {
+        cout << "Base class\n";
+    }
+};
+
+class Derived : public Base {
+public:
+    void speak() {
+        cout << "Derived class\n";
+    }
+    void onlyInDerived() {
+        cout << "Function specific to Derived class\n";
+    }
+};
+
+int main() {
+    Base* basePtr = new Derived;
+    Derived* derivedPtr = dynamic_cast<Derived*>(basePtr);
+
+    if (derivedPtr) {
+        derivedPtr->onlyInDerived();
+    } else {
+        cout << "Casting failed\n";
+    }
+
+    delete basePtr;
+    return 0;
+}
+
+/* Output:
+Function specific to Derived class
+*/
+
+// Q23: Demonstrate the use of const_cast by modifying a constant variable
+#include <iostream>
+using namespace std;
+
+int main() {
+    const int a = 10;
+    int* ptr = const_cast<int*>(&a);
+    *ptr = 20;
+
+    cout << "Modified value: " << *ptr << endl;
+    return 0;
+}
+
+/* Output (undefined behavior, but commonly):
+Modified value: 20
+*/
+
+// Q24: Demonstrate the use of reinterpret_cast to convert an int to a char
+#include <iostream>
+using namespace std;
+
+int main() {
+    int num = 65; // ASCII value of 'A'
+    char* ch = reinterpret_cast<char*>(&num);
+
+    cout << "Character: " << *ch << endl;
+    return 0;
+}
+
+/* Output (system dependent):
+Character: A
+*/
+
+// Q25: Demonstrate the use of C-style casting by converting an int to a double
+#include <iostream>
+using namespace std;
+
+int main() {
+    int num = 7;
+    double d = (double)num;
+
+    cout << "C-style cast: " << d << endl;
+    return 0;
+}
+
+/* Output:
+C-style cast: 7
+*/
+
+// Q26: Write a C++ program to print the numbers from 1 to 10 using a for loop
+#include <iostream>
+using namespace std;
+
+int main() {
+    for (int i = 1; i <= 10; i++) {
+        cout << i << " ";
+    }
+    return 0;
+}
+
+/* Output:
+1 2 3 4 5 6 7 8 9 10
+*/
+
+// Q27: Calculate the sum of the first 50 natural numbers using a while loop
+#include <iostream>
+using namespace std;
+
+int main() {
+    int sum = 0, i = 1;
+    while (i <= 50) {
+        sum += i;
+        i++;
+    }
+    cout << "Sum: " << sum << endl;
+    return 0;
+}
+
+/* Output:
+Sum: 1275
+*/
+
+// Q28: Print the multiplication table of a given number using a do-while loop
+#include <iostream>
+using namespace std;
+
+int main() {
+    int num = 5, i = 1;
+    do {
+        cout << num << " x " << i << " = " << num * i << endl;
+        i++;
+    } while (i <= 10);
+    return 0;
+}
+
+/* Output:
+5 x 1 = 5
+5 x 2 = 10
+...
+5 x 10 = 50
+*/
+
+// Q29: Find the factorial of a given number using a for loop
+#include <iostream>
+using namespace std;
+
+int main() {
+    int num = 5;
+    int fact = 1;
+    for (int i = 1; i <= num; i++) {
+        fact *= i;
+    }
+    cout << "Factorial: " << fact << endl;
+    return 0;
+}
+
+/* Output:
+Factorial: 120
+*/
+
+// Q30: Reverse a given number using a while loop
+#include <iostream>
+using namespace std;
+
+int main() {
+    int num = 1234, reversed = 0;
+    while (num > 0) {
+        reversed = reversed * 10 + num % 10;
+        num /= 10;
+    }
+    cout << "Reversed number: " << reversed << endl;
+    return 0;
+}
+
+/* Output:
+Reversed number: 4321
+*/
+
+// Q31: Check if a given number is a prime number using a for loop
+#include <iostream>
+using namespace std;
+
+int main() {
+    int num = 17;
+    bool isPrime = true;
+
+    if (num <= 1) {
+        isPrime = false;
+    } else {
+        for (int i = 2; i <= num / 2; i++) {
+            if (num % i == 0) {
+                isPrime = false;
+                break;
+            }
+        }
+    }
+
+    if (isPrime)
+        cout << num << " is a prime number.\n";
+    else
+        cout << num << " is not a prime number.\n";
+
+    return 0;
+}
+
+/* Output:
+17 is a prime number.
+*/
+
+// Q32: Print the Fibonacci series up to a given number of terms using a for loop
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n = 10, a = 0, b = 1, next;
+
+    cout << "Fibonacci Series: ";
+    for (int i = 1; i <= n; i++) {
+        cout << a << " ";
+        next = a + b;
+        a = b;
+        b = next;
+    }
+
+    return 0;
+}
+
+/* Output:
+Fibonacci Series: 0 1 1 2 3 5 8 13 21 34
+*/
+// Q33: Count the number of digits in a given number using a while loop
+#include <iostream>
+using namespace std;
+
+int main() {
+    int num = 12345, count = 0;
+
+    while (num != 0) {
+        num /= 10;
+        count++;
+    }
+
+    cout << "Number of digits: " << count << endl;
+    return 0;
+}
+
+/* Output:
+Number of digits: 5
+*/
+// Q34: Print the sum of all even numbers between 1 and 100 using a for loop
+#include <iostream>
+using namespace std;
+
+int main() {
+    int sum = 0;
+
+    for (int i = 2; i <= 100; i += 2) {
+        sum += i;
+    }
+
+    cout << "Sum of even numbers from 1 to 100: " << sum << endl;
+    return 0;
+}
+
+/* Output:
+Sum of even numbers from 1 to 100: 2550
+*/
+
+// Q35: Find the largest number in an array using a for loop
+#include <iostream>
+using namespace std;
+
+int main() {
+    int arr[] = {10, 25, 7, 98, 54};
+    int max = arr[0];
+
+    for (int i = 1; i < 5; i++) {
+        if (arr[i] > max)
+            max = arr[i];
+    }
+
+    cout << "Largest number: " << max << endl;
+    return 0;
+}
+
+/* Output:
+Largest number: 98
+*/
+
+// Q36: Print the elements of an array in reverse order using a for loop
+#include <iostream>
+using namespace std;
+
+int main() {
+    int arr[] = {1, 2, 3, 4, 5};
+
+    cout << "Array in reverse order: ";
+    for (int i = 4; i >= 0; i--) {
+        cout << arr[i] << " ";
+    }
+
+    return 0;
+}
+
+/* Output:
+Array in reverse order: 5 4 3 2 1
+*/
+
+// Q37: Calculate the average of numbers in an array using a for loop
+#include <iostream>
+using namespace std;
+
+int main() {
+    int arr[] = {10, 20, 30, 40, 50};
+    int sum = 0;
+
+    for (int i = 0; i < 5; i++) {
+        sum += arr[i];
+    }
+
+    float average = sum / 5.0;
+    cout << "Average: " << average << endl;
+    return 0;
+}
+
+/* Output:
+Average: 30
+*/
+
+// Q38: Find the GCD (Greatest Common Divisor) of two numbers using a while loop
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a = 36, b = 60;
+
+    while (b != 0) {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+
+    cout << "GCD: " << a << endl;
+    return 0;
+}
+
+/* Output:
+GCD: 12
+*/
+
+// Q39: Print all the prime numbers between 1 and 100 using a for loop
+#include <iostream>
+using namespace std;
+
+int main() {
+    cout << "Prime numbers between 1 and 100:\n";
+
+    for (int num = 2; num <= 100; num++) {
+        bool isPrime = true;
+        for (int i = 2; i <= num / 2; i++) {
+            if (num % i == 0) {
+                isPrime = false;
+                break;
+            }
+        }
+
+        if (isPrime)
+            cout << num << " ";
+    }
+
+    return 0;
+}
+
+/* Output (shortened):
+Prime numbers between 1 and 100:
+2 3 5 7 11 13 17 ... 97
+*/
+
+// Q40: Find the sum of the digits of a given number using a while loop
+#include <iostream>
+using namespace std;
+
+int main() {
+    int num = 1234, sum = 0;
+
+    while (num != 0) {
+        sum += num % 10;
+        num /= 10;
+    }
+
+    cout << "Sum of digits: " << sum << endl;
+    return 0;
+}
+
+/* Output:
+Sum of digits: 10
+*/
+
+// Q41: Check if a given number is a palindrome using a while loop
+#include <iostream>
+using namespace std;
+
+int main() {
+    int num = 121, original = num, reversed = 0;
+
+    while (num != 0) {
+        reversed = reversed * 10 + num % 10;
+        num /= 10;
+    }
+
+    if (original == reversed)
+        cout << "Palindrome number\n";
+    else
+        cout << "Not a palindrome\n";
+
+    return 0;
+}
+
+/* Output:
+Palindrome number
+*/
+
+// Q42: Find the smallest number in an array using a for loop
+#include <iostream>
+using namespace std;
+
+int main() {
+    int arr[] = {45, 2, 89, 23, 12};
+    int min = arr[0];
+
+    for (int i = 1; i < 5; i++) {
+        if (arr[i] < min)
+            min = arr[i];
+    }
+
+    cout << "Smallest number: " << min << endl;
+    return 0;
+}
+
+/* Output:
+Smallest number: 2
+*/
+
+// Q43: Print the first N even numbers using a for loop
+#include <iostream>
+using namespace std;
+
+int main() {
+    int N = 10;
+    cout << "First " << N << " even numbers: ";
+    for (int i = 1; i <= N; i++) {
+        cout << i * 2 << " ";
+    }
+    return 0;
+}
+
+/* Output:
+First 10 even numbers: 2 4 6 8 10 12 14 16 18 20
+*/
+
+// Q44: Print a pattern using nested for loops
+#include <iostream>
+using namespace std;
+
+int main() {
+    int rows = 4;
+    for (int i = 1; i <= rows; i++) {
+        for (int j = 1; j <= i; j++) {
+            cout << "* ";
+        }
+        cout << endl;
+    }
+    return 0;
+}
+
+/* Output:
+* 
+* * 
+* * * 
+* * * * 
+*/
+
+// Q45: Print numbers 1 to 100; replace multiples of 3 with "Fizz", 5 with "Buzz"
+#include <iostream>
+using namespace std;
+
+int main() {
+    for (int i = 1; i <= 100; i++) {
+        if (i % 3 == 0 && i % 5 == 0)
+            cout << "FizzBuzz ";
+        else if (i % 3 == 0)
+            cout << "Fizz ";
+        else if (i % 5 == 0)
+            cout << "Buzz ";
+        else
+            cout << i << " ";
+    }
+    return 0;
+}
+
+/* Output (partial):
+1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz ...
+*/
+
+// Q46: Calculate the sum of digits of a given number using a while loop
+#include <iostream>
+using namespace std;
+
+int main() {
+    int num = 6789, sum = 0;
+
+    while (num != 0) {
+        sum += num % 10;
+        num /= 10;
+    }
+
+    cout << "Sum of digits: " << sum << endl;
+    return 0;
+}
+
+/* Output:
+Sum of digits: 30
+*/
+
+// Q47: Reverse a given string using a for loop
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string str = "hello";
+    string rev = "";
+
+    for (int i = str.length() - 1; i >= 0; i--) {
+        rev += str[i];
+    }
+
+    cout << "Reversed string: " << rev << endl;
+    return 0;
+}
+
+/* Output:
+Reversed string: olleh
+*/
+
+// Q48: Check if a number is an Armstrong number using a while loop
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main() {
+    int num = 153, original = num, sum = 0;
+
+    while (num != 0) {
+        int digit = num % 10;
+        sum += pow(digit, 3);
+        num /= 10;
+    }
+
+    if (sum == original)
+        cout << "Armstrong number\n";
+    else
+        cout << "Not an Armstrong number\n";
+
+    return 0;
+}
+
+/* Output:
+Armstrong number
+*/
+
+// Q49: Find the sum of all elements in an array using a for loop
+#include <iostream>
+using namespace std;
+
+int main() {
+    int arr[] = {1, 2, 3, 4, 5}, sum = 0;
+
+    for (int i = 0; i < 5; i++) {
+        sum += arr[i];
+    }
+
+    cout << "Sum of array elements: " << sum << endl;
+    return 0;
+}
+
+/* Output:
+Sum of array elements: 15
+*/
+
+// Q50: Check if a number is a palindrome using a while loop
+#include <iostream>
+using namespace std;
+
+int main() {
+    int num = 454, original = num, reversed = 0;
+
+    while (num != 0) {
+        reversed = reversed * 10 + num % 10;
+        num /= 10;
+    }
+
+    if (original == reversed)
+        cout << "Palindrome\n";
+    else
+        cout << "Not Palindrome\n";
+
+    return 0;
+}
+
+/* Output:
+Palindrome
+*/
+
+// Q51: Find the sum of all even and odd numbers between 1 and 100 using separate for loops
+#include <iostream>
+using namespace std;
+
+int main() {
+    int evenSum = 0, oddSum = 0;
+
+    for (int i = 2; i <= 100; i += 2) {
+        evenSum += i;
+    }
+
+    for (int i = 1; i <= 100; i += 2) {
+        oddSum += i;
+    }
+
+    cout << "Sum of even numbers: " << evenSum << endl;
+    cout << "Sum of odd numbers: " << oddSum << endl;
+    return 0;
+}
+
+/* Output:
+Sum of even numbers: 2550
+Sum of odd numbers: 2500
+*/
+
+// Q52: Count the number of vowels and consonants in a given string using a for loop
+#include <iostream>
+#include <cctype>
+using namespace std;
+
+int main() {
+    string str = "Hello World";
+    int vowels = 0, consonants = 0;
+
+    for (char ch : str) {
+        ch = tolower(ch);
+        if (isalpha(ch)) {
+            if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u')
+                vowels++;
+            else
+                consonants++;
+        }
+    }
+
+    cout << "Vowels: " << vowels << endl;
+    cout << "Consonants: " << consonants << endl;
+    return 0;
+}
+
+/* Output:
+Vowels: 3
+Consonants: 7
+*/
+
+// Q53: Convert a binary number to a decimal number using a while loop
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main() {
+    int binary = 1101, decimal = 0, base = 1;
+
+    while (binary > 0) {
+        int lastDigit = binary % 10;
+        decimal += lastDigit * base;
+        base *= 2;
+        binary /= 10;
+    }
+
+    cout << "Decimal: " << decimal << endl;
+    return 0;
+}
+
+/* Output:
+Decimal: 13
+*/
+
+// Q54: Print all prime numbers between two given numbers using a for loop
+#include <iostream>
+using namespace std;
+
+int main() {
+    int start = 10, end = 30;
+
+    cout << "Prime numbers between " << start << " and " << end << ":\n";
+    for (int num = start; num <= end; num++) {
+        bool isPrime = true;
+        if (num < 2) continue;
+
+        for (int i = 2; i <= num / 2; i++) {
+            if (num % i == 0) {
+                isPrime = false;
+                break;
+            }
+        }
+
+        if (isPrime)
+            cout << num << " ";
+    }
+
+    return 0;
+}
+
+/* Output:
+Prime numbers between 10 and 30:
+11 13 17 19 23 29
+*/
+
+// Q55: Find the transpose of a given matrix using nested for loops
+#include <iostream>
+using namespace std;
+
+int main() {
+    int rows = 2, cols = 3;
+    int matrix[2][3] = {{1, 2, 3}, {4, 5, 6}};
+    int transpose[3][2];
+
+    // Transpose logic
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            transpose[j][i] = matrix[i][j];
+        }
+    }
+
+    cout << "Transpose of the matrix:\n";
+    for (int i = 0; i < cols; i++) {
+        for (int j = 0; j < rows; j++) {
+            cout << transpose[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
+
+/* Output:
+Transpose of the matrix:
+1 4
+2 5
+3 6
+*/
+
+// Q56: Calculate the sum of the harmonic series up to n terms using a for loop
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n = 5;
+    double sum = 0.0;
+
+    for (int i = 1; i <= n; i++) {
+        sum += 1.0 / i;
+    }
+
+    cout << "Sum of harmonic series up to " << n << " terms: " << sum << endl;
+    return 0;
+}
+
+/* Output:
+Sum of harmonic series up to 5 terms: 2.28333
+*/
+
+// Q57: Find duplicate elements in an array using nested for loops
+#include <iostream>
+using namespace std;
+
+int main() {
+    int arr[] = {2, 4, 5, 2, 6, 4};
+    int size = 6;
+
+    cout << "Duplicate elements are: ";
+    for (int i = 0; i < size; i++) {
+        for (int j = i + 1; j < size; j++) {
+            if (arr[i] == arr[j]) {
+                cout << arr[i] << " ";
+                break;
+            }
+        }
+    }
+
+    return 0;
+}
+
+/* Output:
+Duplicate elements are: 2 4
+*/
+
+// Q58: Print a pyramid pattern using nested for loops
+#include <iostream>
+using namespace std;
+
+int main() {
+    int rows = 4;
+
+    for (int i = 1; i <= rows; i++) {
+        for (int j = 1; j <= rows - i; j++)
+            cout << " ";
+
+        for (int k = 1; k <= i; k++)
+            cout << "* ";
+
+        cout << endl;
+    }
+
+    return 0;
+}
+
+/* Output:
+   * 
+  * * 
+ * * * 
+* * * * 
+*/
+
+// Q59: Find the LCM (Least Common Multiple) of two numbers using a while loop
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a = 15, b = 20;
+    int max = (a > b) ? a : b;
+
+    while (true) {
+        if (max % a == 0 && max % b == 0) {
+            cout << "LCM: " << max << endl;
+            break;
+        }
+        max++;
+    }
+
+    return 0;
+}
+
+/* Output:
+LCM: 60
+*/
+
+// Q60: Generate the Fibonacci series up to n terms using a for loop
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n = 10;
+    int a = 0, b = 1, next;
+
+    cout << "Fibonacci Series: ";
+    for (int i = 1; i <= n; i++) {
+        cout << a << " ";
+        next = a + b;
+        a = b;
+        b = next;
+    }
+
+    return 0;
+}
+
+/* Output:
+Fibonacci Series: 0 1 1 2 3 5 8 13 21 34
+*/
+
+// Q61: Add two matrices using nested for loops
+#include <iostream>
+using namespace std;
+
+int main() {
+    int rows = 2, cols = 2;
+    int mat1[2][2] = {{1, 2}, {3, 4}};
+    int mat2[2][2] = {{5, 6}, {7, 8}};
+    int sum[2][2];
+
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            sum[i][j] = mat1[i][j] + mat2[i][j];
+        }
+    }
+
+    cout << "Sum of matrices:\n";
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            cout << sum[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
+
+/* Output:
+Sum of matrices:
+6 8
+10 12
+*/
+// Q62: Create a number guessing game where the user has to guess a number between 1 and 100 using a while loop
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+int main() {
+    srand(time(0));  // Seed for random number
+    int secret = rand() % 100 + 1;
+    int guess;
+
+    cout << "Guess the number between 1 and 100: ";
+    while (true) {
+        cin >> guess;
+        if (guess == secret) {
+            cout << "Congratulations! You guessed it.\n";
+            break;
+        } else if (guess < secret) {
+            cout << "Too low! Try again: ";
+        } else {
+            cout << "Too high! Try again: ";
+        }
+    }
+
+    return 0;
+}
+
+/* Output (example):
+Guess the number between 1 and 100: 50
+Too low! Try again: 75
+Too high! Try again: 63
+Congratulations! You guessed it.
+*/
+
+// Q63: Count the frequency of each character in a string using a for loop
+#include <iostream>
+using namespace std;
+
+int main() {
+    string str = "apple";
+    int freq[256] = {0}; // For ASCII characters
+
+    for (char ch : str) {
+        freq[ch]++;
+    }
+
+    cout << "Character frequencies:\n";
+    for (int i = 0; i < 256; i++) {
+        if (freq[i] > 0) {
+            cout << char(i) << ": " << freq[i] << endl;
+        }
+    }
+
+    return 0;
+}
+
+/* Output:
+Character frequencies:
+a: 1
+e: 1
+l: 1
+p: 2
+*/
+
+// Q64: Convert a decimal number to a binary number using a while loop
+#include <iostream>
+using namespace std;
+
+int main() {
+    int decimal = 13;
+    int binary[32];
+    int index = 0;
+
+    while (decimal > 0) {
+        binary[index] = decimal % 2;
+        decimal /= 2;
+        index++;
+    }
+
+    cout << "Binary: ";
+    for (int i = index - 1; i >= 0; i--) {
+        cout << binary[i];
+    }
+
+    return 0;
+}
+
+/* Output:
+Binary: 1101
+*/
+
+
+
