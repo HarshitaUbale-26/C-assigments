@@ -1,0 +1,1735 @@
+54. Create a class Person with private attributes name, age, and public methods to set and get the values.
+
+// 54. Create a class Person with private attributes name, age, and public methods to set and get the values.
+
+#include <iostream>
+#include <string>
+
+class Person {
+private:
+    std::string name;
+    int age;
+
+public:
+    void setName(const std::string& n) {
+        name = n;
+    }
+
+    void setAge(int a) {
+        age = a;
+    }
+
+    std::string getName() const {
+        return name;
+    }
+
+    int getAge() const {
+        return age;
+    }
+};
+
+int main() {
+    Person p;
+    p.setName("John");
+    p.setAge(25);
+
+    std::cout << "Name: " << p.getName() << ", Age: " << p.getAge() << std::endl;
+    return 0;
+}
+Output:
+Name: John, Age: 25
+
+55. Implement a class Student that inherits from Person and adds a private attribute studentID with appropriate methods.
+
+// 55. Implement a class Student that inherits from Person and adds a private attribute studentID with appropriate methods.
+
+#include <iostream>
+#include <string>
+
+class Person {
+private:
+    std::string name;
+    int age;
+
+public:
+    void setName(const std::string& n) {
+        name = n;
+    }
+
+    void setAge(int a) {
+        age = a;
+    }
+
+    std::string getName() const {
+        return name;
+    }
+
+    int getAge() const {
+        return age;
+    }
+};
+
+class Student : public Person {
+private:
+    int studentID;
+
+public:
+    void setStudentID(int id) {
+        studentID = id;
+    }
+
+    int getStudentID() const {
+        return studentID;
+    }
+};
+
+int main() {
+    Student s;
+    s.setName("Alice");
+    s.setAge(20);
+    s.setStudentID(12345);
+
+    std::cout << "Name: " << s.getName() << ", Age: " << s.getAge() << ", Student ID: " << s.getStudentID() << std::endl;
+    return 0;
+}
+Output:
+
+
+Name: Alice, Age: 20, Student ID: 12345
+56. Design a class Car with attributes for make, model, and year. Include methods to display car details.
+cpp
+Copy
+Edit
+// 56. Design a class Car with attributes for make, model, and year. Include methods to display car details.
+
+#include <iostream>
+#include <string>
+
+class Car {
+private:
+    std::string make;
+    std::string model;
+    int year;
+
+public:
+    void setDetails(const std::string& m, const std::string& mo, int y) {
+        make = m;
+        model = mo;
+        year = y;
+    }
+
+    void displayDetails() const {
+        std::cout << "Car Make: " << make << ", Model: " << model << ", Year: " << year << std::endl;
+    }
+};
+
+int main() {
+    Car c;
+    c.setDetails("Toyota", "Corolla", 2020);
+    c.displayDetails();
+    return 0;
+}
+Output:
+Car Make: Toyota, Model: Corolla, Year: 2020
+
+57. Write a program that creates an array of Car objects and displays their details.
+
+// 57. Write a program that creates an array of Car objects and displays their details.
+
+#include <iostream>
+#include <string>
+
+class Car {
+private:
+    std::string make;
+    std::string model;
+    int year;
+
+public:
+    void setDetails(const std::string& m, const std::string& mo, int y) {
+        make = m;
+        model = mo;
+        year = y;
+    }
+
+    void displayDetails() const {
+        std::cout << "Car Make: " << make << ", Model: " << model << ", Year: " << year << std::endl;
+    }
+};
+
+int main() {
+    Car cars[2];
+    cars[0].setDetails("Honda", "Civic", 2018);
+    cars[1].setDetails("Ford", "Focus", 2019);
+
+    for (int i = 0; i < 2; ++i) {
+        cars[i].displayDetails();
+    }
+
+    return 0;
+}
+Output:
+Car Make: Honda, Model: Civic, Year: 2018
+Car Make: Ford, Model: Focus, Year: 2019
+
+58. Implement a class BankAccount with private attributes for accountNumber, balance, and public methods for depositing and withdrawing money.
+
+// 58. Implement a class BankAccount with private attributes for account number, balance, and public methods for depositing and withdrawing money.
+
+#include <iostream>
+
+class BankAccount {
+private:
+    int accountNumber;
+    double balance;
+
+public:
+    BankAccount(int accNum, double initialBalance) : accountNumber(accNum), balance(initialBalance) {}
+
+    void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            std::cout << "Deposited: " << amount << ", New Balance: " << balance << std::endl;
+        } else {
+            std::cout << "Invalid deposit amount." << std::endl;
+        }
+    }
+
+    void withdraw(double amount) {
+        if (amount > 0 && amount <= balance) {
+            balance -= amount;
+            std::cout << "Withdrew: " << amount << ", New Balance: " << balance << std::endl;
+        } else {
+            std::cout << "Invalid withdrawal amount." << std::endl;
+        }
+    }
+
+    double getBalance() const {
+        return balance;
+    }
+};
+
+int main() {
+    BankAccount account(101, 500.0);
+    account.deposit(200.0);
+    account.withdraw(100.0);
+    std::cout << "Final Balance: " << account.getBalance() << std::endl;
+    return 0;
+}
+Output:
+Deposited: 200, New Balance: 700
+Withdrew: 100, New Balance: 600
+Final Balance: 600
+59. Create a class Rectangle with private attributes for length and width, and public methods to calculate area and perimeter.
+
+// 59. Create a class Rectangle with private attributes for length and width, and public methods to calculate area and perimeter.
+
+#include <iostream>
+
+class Rectangle {
+private:
+    double length;
+    double width;
+
+public:
+    // Constructor to initialize length and width
+    Rectangle(double len, double wid) : length(len), width(wid) {}
+
+    // Method to calculate area
+    double area() const {
+        return length * width;
+    }
+
+    // Method to calculate perimeter
+    double perimeter() const {
+        return 2 * (length + width);
+    }
+};
+
+int main() {
+    double len, wid;
+    std::cout << "Enter length and width of the rectangle: ";
+    std::cin >> len >> wid;
+
+    Rectangle rect(len, wid);
+    std::cout << "Area: " << rect.area() << std::endl;
+    std::cout << "Perimeter: " << rect.perimeter() << std::endl;
+
+    return 0;
+}
+Output:
+Enter length and width of the rectangle: 5 3
+Area: 15
+Perimeter: 16
+
+// 60. Employee class with private attributes and public methods
+
+#include <iostream>
+#include <string>
+
+class Employee {
+private:
+    std::string name;
+    std::string position;
+    double salary;
+
+public:
+    Employee(const std::string& n, const std::string& p, double s)
+        : name(n), position(p), salary(s) {}
+
+    void display() const {
+        std::cout << "Name: " << name << "\nPosition: " << position << "\nSalary: " << salary << std::endl;
+    }
+};
+
+int main() {
+    Employee emp("John Doe", "Software Developer", 75000);
+    emp.display();
+    return 0;
+}
+Output:
+
+makefile
+Copy
+Edit
+Name: John Doe
+Position: Software Developer
+Salary: 75000
+61. Counter Class with Static Member
+cpp
+Copy
+Edit
+// 61. Counter class with static data member
+
+#include <iostream>
+
+class Counter {
+private:
+    static int count;
+
+public:
+    Counter() {
+        ++count;
+    }
+
+    static int getCount() {
+        return count;
+    }
+};
+
+int Counter::count = 0;
+
+int main() {
+    Counter c1, c2, c3;
+    std::cout << "Number of objects created: " << Counter::getCount() << std::endl;
+    return 0;
+}
+Output:
+
+javascript
+Copy
+Edit
+Number of objects created: 3
+62. Math Class with Static Functions
+cpp
+Copy
+Edit
+// 62. Math class with static function members
+
+#include <iostream>
+
+class Math {
+public:
+    static int add(int a, int b) {
+        return a + b;
+    }
+
+    static int subtract(int a, int b) {
+        return a - b;
+    }
+
+    static int multiply(int a, int b) {
+        return a * b;
+    }
+
+    static double divide(int a, int b) {
+        if (b != 0)
+            return static_cast<double>(a) / b;
+        else {
+            std::cout << "Division by zero is not allowed." << std::endl;
+            return 0;
+        }
+    }
+};
+
+int main() {
+    int a = 10, b = 5;
+    std::cout << "Addition: " << Math::add(a, b) << std::endl;
+    std::cout << "Subtraction: " << Math::subtract(a, b) << std::endl;
+    std::cout << "Multiplication: " << Math::multiply(a, b) << std::endl;
+    std::cout << "Division: " << Math::divide(a, b) << std::endl;
+    return 0;
+}
+Output:
+
+makefile
+
+
+
+Addition: 15
+Subtraction: 5
+Multiplication: 50
+Division: 2
+63. Student Class with Static Data Member
+
+// 63. Student class with static data member
+
+#include <iostream>
+#include <string>
+
+class Student {
+private:
+    std::string name;
+    static int totalStudents;
+
+public:
+    Student(const std::string& n) : name(n) {
+        ++totalStudents;
+    }
+
+    static int getTotalStudents() {
+        return totalStudents;
+    }
+};
+
+int Student::totalStudents = 0;
+
+int main() {
+    Student s1("Alice"), s2("Bob"), s3("Charlie");
+    std::cout << "Total students enrolled: " << Student::getTotalStudents() << std::endl;
+    return 0;
+}
+Output:
+Total students enrolled: 3
+64. Book Class with Parameterized Constructor
+
+// 64. Book class with parameterized constructor
+
+#include <iostream>
+#include <string>
+
+class Book {
+private:
+    std::string title;
+    std::string author;
+    int year;
+
+public:
+    Book(const std::string& t, const std::string& a, int y)
+        : title(t), author(a), year(y) {}
+
+    void display() const {
+        std::cout << "Title: " << title << "\nAuthor: " << author << "\nYear: " << year << std::endl;
+    }
+};
+
+int main() {
+    Book b("1984", "George Orwell", 1949);
+    b.display();
+    return 0;
+}
+Output:
+Title: 1984
+Author: George Orwell
+Year: 1949
+65. Point Class with Constructors
+// 65. Point class with default, parameterized, and copy constructors
+
+#include <iostream>
+
+class Point {
+private:
+    int x, y;
+
+public:
+    Point() : x(0), y(0) {}
+    Point(int xVal, int yVal) : x(xVal), y(yVal) {}
+    Point(const Point& p) : x(p.x), y(p.y) {}
+
+    void display() const {
+        std::cout << "Point(" << x << ", " << y << ")" << std::endl;
+    }
+};
+
+int main() {
+    Point p1;
+    Point p2(3, 4);
+    Point p3 = p2;
+
+    p1.display();
+    p2.display();
+    p3.display();
+
+    return 0;
+}
+Output:
+Point(0, 0)
+Point(3, 4)
+Point(3, 4)
+66. Matrix Class with Parameterized Constructor
+cpp
+Copy
+Edit
+// 66. Matrix class with parameterized constructor
+
+#include <iostream>
+
+class Matrix {
+private:
+    int m[2][2];
+
+public:
+    Matrix(int a, int b, int c, int d) {
+        m[0][0] = a; m[0][1] = b;
+        m[1][0] = c; m[1][1] = d;
+    }
+
+    void display() const {
+        for (int i = 0; i < 2; ++i) {
+            for (int j = 0; j < 2; ++j)
+                std::cout << m[i][j] << " ";
+            std::cout << std::endl;
+        }
+    }
+};
+
+int main() {
+    Matrix mat(1, 2, 3, 4);
+    mat.display();
+    return 0;
+}
+Output:
+1 2
+3 4
+
+Matrix Class with Parameterized Constructor
+cpp
+Copy
+Edit
+// 66. Matrix class with parameterized constructor
+
+#include <iostream>
+
+class Matrix {
+private:
+    int m[2][2];
+
+public:
+    Matrix(int a, int b, int c, int d) {
+        m[0][0] = a; m[0][1] = b;
+        m[1][0] = c; m[1][1] = d;
+    }
+
+    void display() const {
+        for (int i = 0; i < 2; ++i) {
+            for (int j = 0; j < 2; ++j)
+                std::cout << m[i][j] << " ";
+            std::cout << std::endl;
+        }
+    }
+};
+
+int main() {
+    Matrix mat(1, 2, 3, 4);
+    mat.display();
+    return 0;
+}
+Output:
+
+Copy
+Edit
+1 2
+3 4
+
+67. FileHandler Class with Destructor
+// 67. FileHandler class with destructor
+
+#include <iostream>
+#include <fstream>
+#include <stdexcept>
+
+class FileHandler {
+private:
+    std::ofstream file;
+
+public:
+    FileHandler(const std::string& filename) {
+        file.open(filename);
+        if (!file.is_open()) {
+            throw std::runtime_error("Unable to open file");
+        }
+        std::cout << "File opened" << std::endl;
+    }
+
+    ~FileHandler() {
+        if (file.is_open()) {
+            file.close();
+            std::cout << "File closed" << std::endl;
+        }
+    }
+
+    void write(const std::string& data) {
+        file << data;
+    }
+};
+
+int main() {
+    try {
+        FileHandler fh("example.txt");
+        fh.write("Hello, World!");
+        // File is automatically closed when fh goes out of scope
+    } catch (const std::exception& e) {
+        std::cerr << "Error: " << e.what() << std::endl;
+    }
+    return 0;
+}
+Output:
+
+arduino
+
+File opened
+File closed
+68. DynamicArray Class with Destructor
+// 68. DynamicArray class with destructor
+
+#include <iostream>
+
+class DynamicArray {
+private:
+    int* data;
+    int size;
+
+public:
+    DynamicArray(int s) : size(s) {
+        data = new int[size];
+        std::cout << "Array of size " << size << " created." << std::endl;
+    }
+
+    ~DynamicArray() {
+        delete[] data;
+        std::cout << "Array of size " << size << " destroyed." << std::endl;
+    }
+};
+
+int main() {
+    DynamicArray arr(5);
+    // Array is automatically destroyed when arr goes out of scope
+    return 0;
+}
+Output:
+
+arduino
+Copy
+Edit
+Array of size 5 created.
+Array of size 5 destroyed.
+69. Logger Class with Destructor
+
+// 69. Logger class with destructor
+
+#include <iostream>
+
+class Logger {
+public:
+    Logger() {
+        std::cout << "Logger initialized." << std::endl;
+    }
+
+    ~Logger() {
+        std::cout << "Logger destroyed." << std::endl;
+    }
+};
+
+int main() {
+    Logger log;
+    // Logger is automatically destroyed when log goes out of scope
+    return 0;
+}
+Output:
+Logger initialized.
+Logger destroyed.
+70. Complex Class with "+" Operator Overload
+// 70. Complex class with "+" operator overload
+
+#include <iostream>
+
+class Complex {
+private:
+    int real, imag;
+
+public:
+    Complex(int r, int i) : real(r), imag(i) {}
+
+    Complex operator+(const Complex& other) {
+        return Complex(real + other.real, imag + other.imag);
+    }
+
+    void display() const {
+        std::cout << real << " + " << imag << "i" << std::endl;
+    }
+};
+
+int main() {
+    Complex c1(3, 4), c2(1, 2);
+    Complex c3 = c1 + c2;
+    c3.display();
+    return 0;
+}
+Output:
+4 + 6i
+71. Fraction Class with "<<" and ">>" Operator Overload
+// 71. Fraction class with "<<" and ">>" operator overload
+
+#include <iostream>
+
+class Fraction {
+private:
+    int numerator, denominator;
+
+public:
+    Fraction(int n = 0, int d = 1) : numerator(n), denominator(d) {}
+
+    friend std::ostream& operator<<(std::ostream& os, const Fraction& f) {
+        os << f.numerator << "/" << f.denominator;
+        return os;
+    }
+
+    friend std::istream& operator>>(std::istream& is, Fraction& f) {
+        char slash;
+        is >> f.numerator >> slash >> f.denominator;
+        return is;
+    }
+};
+
+int main() {
+    Fraction f1;
+    std::cout << "Enter a fraction (numerator/denominator): ";
+    std::cin >> f1;
+    std::cout << "You entered: " << f1 << std::endl;
+    return 0;
+}
+Sample Input:
+
+Enter a fraction (numerator/denominator): 3/4
+Output:
+You entered: 3/4
+72. Date Class with "==" Operator Overload
+// 72. Date class with "==" operator overload
+
+#include <iostream>
+
+class Date {
+private:
+    int day, month, year;
+
+public:
+    Date(int d, int m, int y) : day(d), month(m), year(y) {}
+
+    bool operator==(const Date& other) const {
+        return (day == other.day && month == other.month && year == other.year);
+    }
+};
+
+int main() {
+    Date d1(1, 1, 2025), d2(1, 1, 2025);
+    if (d1 == d2)
+        std::cout << "Dates are equal." << std::endl;
+    else
+        std::cout << "Dates are not equal." << std::endl;
+    return 0;
+}
+Output:
+Dates are equal.
+73. Vector Class with "[]" Operator Overload
+// 73. Vector class with "[]" operator overload
+
+#include <iostream>
+
+class Vector {
+private:
+    int arr[5];
+
+public:
+    int& operator[](int index) {
+        return arr[index];
+    }
+};
+
+int main() {
+    Vector v;
+    v[0] = 10;
+    v[1] = 20;
+    std::cout << "v[0]: " << v[0] << ", v[1]: " << v[1] << std::endl;
+    return 0;
+}
+Output:
+v[0]: 10, v[1]: 20
+74. Box Class with Friend Function
+// 74. Box class with friend function
+
+#include <iostream>
+
+class Box {
+private:
+    double length, width, height;
+
+public:
+    Box(double l, double w, double h) : length(l), width(w), height(h) {}
+
+    friend double calculateVolume(const Box& b);
+};
+
+double calculateVolume(const Box& b) {
+    return b.length * b.width * b.height;
+}
+
+int main() {
+    Box b(3.0, 4.0, 5.0);
+    std::cout << "Volume of the box: " << calculateVolume(b) << std::endl;
+    return 0;
+}
+Output
+Volume of the box: 60
+
+Circle Class with Friend Function
+// 75. Circle class with friend function to calculate area
+
+#include <iostream>
+
+class Circle {
+private:
+    double radius;
+
+public:
+    Circle(double r) : radius(r) {}
+
+    // Friend function declaration
+    friend double calculateArea(const Circle& c);
+};
+
+// Friend function definition
+double calculateArea(const Circle& c) {
+    return 3.14 * c.radius * c.radius;
+}
+
+int main() {
+    Circle c(5.0);
+    std::cout << "Area of the circle: " << calculateArea(c) << std::endl;
+    return 0;
+}
+Output:
+
+arduino
+Copy
+Edit
+Area of the circle: 78.5
+76. Distance Class with Friend Function
+
+// 76. Distance class with friend function to add two distances
+
+#include <iostream>
+
+class Distance {
+private:
+    int meters;
+
+public:
+    Distance(int m) : meters(m) {}
+
+    // Friend function declaration
+    friend Distance addDistances(const Distance& d1, const Distance& d2);
+};
+
+// Friend function definition
+Distance addDistances(const Distance& d1, const Distance& d2) {
+    return Distance(d1.meters + d2.meters);
+}
+
+int main() {
+    Distance d1(5), d2(10);
+    Distance d3 = addDistances(d1, d2);
+    std::cout << "Total distance: " << d3.meters << " meters" << std::endl;
+    return 0;
+}
+Output:
+Total distance: 15 meters
+77. Shape Class with Derived Classes
+
+// 77. Shape class with derived classes Circle, Rectangle, and Triangle
+
+#include <iostream>
+#include <cmath>
+
+class Shape {
+public:
+    virtual void draw() const = 0; // Pure virtual function
+};
+
+class Circle : public Shape {
+public:
+    void draw() const override {
+        std::cout << "Drawing a Circle" << std::endl;
+    }
+};
+
+class Rectangle : public Shape {
+public:
+    void draw() const override {
+        std::cout << "Drawing a Rectangle" << std::endl;
+    }
+};
+
+class Triangle : public Shape {
+public:
+    void draw() const override {
+        std::cout << "Drawing a Triangle" << std::endl;
+    }
+};
+
+int main() {
+    Circle c;
+    Rectangle r;
+    Triangle t;
+
+    c.draw();
+    r.draw();
+    t.draw();
+
+    return 0;
+}
+Output:
+Drawing a Circle
+Drawing a Rectangle
+Drawing a Triangle
+78. Animal Class with Derived Classes
+
+// 78. Animal class with derived classes Dog, Cat, and Bird
+
+#include <iostream>
+
+class Animal {
+public:
+    virtual void sound() const = 0; // Pure virtual function
+};
+
+class Dog : public Animal {
+public:
+    void sound() const override {
+        std::cout << "Bark" << std::endl;
+    }
+};
+
+class Cat : public Animal {
+public:
+    void sound() const override {
+        std::cout << "Meow" << std::endl;
+    }
+};
+
+class Bird : public Animal {
+public:
+    void sound() const override {
+        std::cout << "Chirp" << std::endl;
+    }
+};
+
+int main() {
+    Dog d;
+    Cat c;
+    Bird b;
+
+    d.sound();
+    c.sound();
+    b.sound();
+
+    return 0;
+}
+Output:
+Bark
+Meow
+Chirp
+79. Vehicle Class with Derived Classes
+// 79. Vehicle class with derived classes Car and Bike
+
+#include <iostream>
+
+class Vehicle {
+public:
+    virtual void type() const = 0; // Pure virtual function
+};
+
+class Car : public Vehicle {
+public:
+    void type() const override {
+        std::cout << "This is a Car" << std::endl;
+    }
+};
+
+class Bike : public Vehicle {
+public:
+    void type() const override {
+        std::cout << "This is a Bike" << std::endl;
+    }
+};
+
+int main() {
+    Car c;
+    Bike b;
+
+    c.type();
+    b.type();
+
+    return 0;
+}
+Output:
+This is a Car
+This is a Bike
+80. Person and Employee Classes (Single Inheritance)
+// 80. Person and Employee classes demonstrating single inheritance
+
+#include <iostream>
+#include <string>
+
+class Person {
+protected:
+    std::string name;
+
+public:
+    Person(const std::string& n) : name(n) {}
+
+    void display() const {
+        std::cout << "Name: " << name << std::endl;
+    }
+};
+
+class Employee : public Person {
+private:
+    std::string position;
+
+public:
+    Employee(const std::string& n, const std::string& p) : Person(n), position(p) {}
+
+    void display() const {
+        Person::display();
+        std::cout << "Position: " << position << std::endl;
+    }
+};
+
+int main() {
+    Employee e("John Doe", "Software Developer");
+    e.display();
+
+    return 0;
+}
+Output:
+Name: John Doe
+Position: Software Developer
+81. Parent and Child Classes (Multiple Inheritance)
+
+// 81. Parent and Child classes demonstrating multiple inheritance
+
+#include <iostream>
+
+class Parent1 {
+public:
+    void speak() const {
+        std::cout << "Speaking from Parent1" << std::endl;
+    }
+};
+
+class Parent2 {
+public:
+    void talk() const {
+        std::cout << "Talking from Parent2" << std::endl;
+    }
+};
+
+class Child : public Parent1, public Parent2 {
+public:
+    void greet() const {
+        std::cout << "Hello from Child" << std::endl;
+    }
+};
+
+int main() {
+    Child c;
+    c.speak();
+    c.talk();
+    c.greet();
+
+    return 0;
+}
+Output:
+Speaking from Parent1
+Talking from Parent2
+Hello from Child
+
+// 82. Base and Derived classes demonstrating hierarchical inheritance
+
+#include <iostream>
+
+class Base {
+public:
+    void show() const {
+        std::cout << "Base class show function" << std::endl;
+    }
+};
+
+class Derived1 : public Base {
+public:
+    void display() const {
+        std::cout << "Derived1 class display function" << std::endl;
+    }
+};
+
+class Derived2 : public Base {
+public:
+    void display() const {
+        std::cout << "Derived2 class display function" << std::endl;
+    }
+};
+
+int main() {
+    Derived1 d1;
+    Derived2 d2;
+
+    d1.show();
+    d1.display();
+
+    d2.show();
+    d2.display();
+
+    return 0;
+}
+Output:
+Base class show function
+Derived1 class display function
+Base class show function
+Derived2 class display function
+83. Multilevel Inheritance
+cpp
+Copy
+Edit
+// 83. Multilevel inheritance with Base, Intermediate, and Derived classes
+
+#include <iostream>
+
+class Base {
+public:
+    void baseFunction() const {
+        std::cout << "Base class function" << std::endl;
+    }
+};
+
+class Intermediate : public Base {
+public:
+    void intermediateFunction() const {
+        std::cout << "Intermediate class function" << std::endl;
+    }
+};
+
+class Derived : public Intermediate {
+public:
+    void derivedFunction() const {
+        std::cout << "Derived class function" << std::endl;
+    }
+};
+
+int main() {
+    Derived d;
+    d.baseFunction();
+    d.intermediateFunction();
+    d.derivedFunction();
+
+    return 0;
+}
+Output:
+Base class function
+Intermediate class function
+Derived class function
+84. Hybrid Inheritance
+// 84. Hybrid inheritance with Base, Derived1, Derived2, and Derived3 classes
+
+#include <iostream>
+
+class Base {
+public:
+    void baseFunction() const {
+        std::cout << "Base class function" << std::endl;
+    }
+};
+
+class Derived1 : public Base {
+public:
+    void derived1Function() const {
+        std::cout << "Derived1 class function" << std::endl;
+    }
+};
+
+class Derived2 : public Base {
+public:
+    void derived2Function() const {
+        std::cout << "Derived2 class function" << std::endl;
+    }
+};
+
+class Derived3 : public Derived1, public Derived2 {
+public:
+    void derived3Function() const {
+        std::cout << "Derived3 class function" << std::endl;
+    }
+};
+
+int main() {
+    Derived3 d;
+    d.baseFunction();  // Ambiguity resolved by specifying the base class
+    d.derived1Function();
+    d.derived2Function();
+    d.derived3Function();
+
+    return 0;
+}
+Output:
+
+Base class function
+Derived1 class function
+Derived2 class function
+Derived3 class function
+85. Library Class with Private, Protected, and Public Members
+// 85. Library class demonstrating private, protected, and public members
+
+#include <iostream>
+#include <string>
+
+class Library {
+private:
+    std::string bookName;
+
+protected:
+    int bookID;
+
+public:
+    Library(const std::string& name, int id) : bookName(name), bookID(id) {}
+
+    void displayBookInfo() const {
+        std::cout << "Book Name: " << bookName << std::endl;
+        std::cout << "Book ID: " << bookID << std::endl;
+    }
+};
+
+class Book : public Library {
+public:
+    Book(const std::string& name, int id) : Library(name, id) {}
+
+    void setBookID(int id) {
+        bookID = id;
+    }
+
+    void displayBookID() const {
+        std::cout << "Book ID: " << bookID << std::endl;
+    }
+};
+
+int main() {
+    Book b("C++ Programming", 101);
+    b.displayBookInfo();
+    b.setBookID(102);
+    b.displayBookID();
+
+    return 0;
+}
+Output:
+Book Name: C++ Programming
+Book ID: 101
+Book ID: 102
+86. Account Class with Private Data Members
+// 86. Account class with private data members and public methods
+
+#include <iostream>
+
+class Account {
+private:
+    int accountNumber;
+    double balance;
+
+public:
+    Account(int accNum, double bal) : accountNumber(accNum), balance(bal) {}
+
+    void deposit(double amount) {
+        balance += amount;
+        std::cout << "Deposited: " << amount << std::endl;
+    }
+
+    void withdraw(double amount) {
+        if (amount <= balance) {
+            balance -= amount;
+            std::cout << "Withdrawn: " << amount << std::endl;
+        } else {
+            std::cout << "Insufficient balance" << std::endl;
+        }
+    }
+
+    void displayBalance() const {
+        std::cout << "Balance: " << balance << std::endl;
+    }
+};
+
+int main() {
+    Account acc(12345, 1000.0);
+    acc.deposit(500.0);
+    acc.withdraw(200.0);
+    acc.displayBalance();
+
+    return 0;
+}
+Output:
+
+yaml
+Copy
+Edit
+Deposited: 500
+Withdrawn: 200
+Balance: 1300
+87. Function Overriding with Shape and Circle Classes
+
+// 87. Function overriding with Shape and Circle classes
+
+#include <iostream>
+
+class Shape {
+public:
+    virtual void draw() const {
+        std::cout << "Drawing a shape" << std::endl;
+    }
+};
+
+class Circle : public Shape {
+public:
+    void draw() const override {
+        std::cout << "Drawing a circle" << std::endl;
+    }
+};
+
+int main() {
+    Shape* shapePtr;
+    Circle c;
+    shapePtr = &c;
+    shapePtr->draw();
+
+    return 0;
+}
+Output:
+
+
+Drawing a circle
+88. Employee and Manager Classes with Overridden Methods
+// 88. Employee and Manager classes with overridden methods
+
+#include <iostream>
+
+class Employee {
+public:
+    virtual void displayRole() const {
+        std::cout << "Employee role" << std::endl;
+    }
+};
+
+class Manager : public Employee {
+public:
+    void displayRole() const override {
+        std::cout << "Manager role" << std::endl;
+    }
+};
+
+int main() {
+    Employee* empPtr;
+    Manager m;
+    empPtr = &m;
+    empPtr->displayRole();
+
+    return 0;
+}
+Output:
+
+Manager role
+
+Virtual Base Class with Person and Organization
+cpp
+Copy
+Edit
+// 89. Virtual base class Entity with Person and Organization classes
+
+#include <iostream>
+#include <string>
+
+class Entity {
+protected:
+    std::string name;
+
+public:
+    Entity(const std::string& n) : name(n) {}
+    void display() const {
+        std::cout << "Name: " << name << std::endl;
+    }
+};
+
+class Person : virtual public Entity {
+public:
+    Person(const std::string& n) : Entity(n) {}
+};
+
+class Organization : virtual public Entity {
+public:
+    Organization(const std::string& n) : Entity(n) {}
+};
+
+class Employee : public Person, public Organization {
+public:
+    Employee(const std::string& n) : Entity(n), Person(n), Organization(n) {}
+};
+
+int main() {
+    Employee e("John Doe");
+    e.display();
+
+    return 0;
+}
+Output:
+
+makefile
+Copy
+Edit
+Name: John Doe
+90. Abstract Base Class with Pure Virtual Function
+cpp
+Copy
+Edit
+// 90. Abstract base class with pure virtual function
+
+#include <iostream>
+
+class Shape {
+public:
+    virtual void draw() const = 0; // Pure virtual function
+    virtual ~Shape() {} // Virtual destructor
+};
+
+class Circle : public Shape {
+public:
+    void draw() const override {
+        std::cout << "Drawing a Circle" << std::endl;
+    }
+};
+
+int main() {
+    Circle c;
+    c.draw();
+
+    return 0;
+}
+Output:
+
+
+Drawing a Circle
+91. Abstract Base Class with Multiple Derived Classes
+// 91. Abstract base class with multiple derived classes
+
+#include <iostream>
+
+class Shape {
+public:
+    virtual void draw() const = 0; // Pure virtual function
+    virtual ~Shape() {} // Virtual destructor
+};
+
+class Circle : public Shape {
+public:
+    void draw() const override {
+        std::cout << "Drawing a Circle" << std::endl;
+    }
+};
+
+class Rectangle : public Shape {
+public:
+    void draw() const override {
+        std::cout << "Drawing a Rectangle" << std::endl;
+    }
+};
+
+int main() {
+    Circle c;
+    Rectangle r;
+
+    c.draw();
+    r.draw();
+
+    return 0;
+}
+Output:
+Drawing a Circle
+Drawing a Rectangle
+92. Abstract Base Class with Derived Class Implementing Function
+// 92. Abstract base class with derived class implementing function
+
+#include <iostream>
+
+class Shape {
+public:
+    virtual void draw() const = 0; // Pure virtual function
+    virtual ~Shape() {} // Virtual destructor
+};
+
+class Triangle : public Shape {
+public:
+    void draw() const override {
+        std::cout << "Drawing a Triangle" << std::endl;
+    }
+};
+
+int main() {
+    Triangle t;
+    t.draw();
+
+    return 0;
+}
+Output:
+Drawing a Triangle
+93. Abstract Base Class with Multiple Derived Classes and Function Overriding
+// 93. Abstract base class with multiple derived classes and function overriding
+
+#include <iostream>
+
+class Shape {
+public:
+    virtual void draw() const = 0; // Pure virtual function
+    virtual ~Shape() {} // Virtual destructor
+};
+
+class Circle : public Shape {
+public:
+    void draw() const override {
+        std::cout << "Drawing a Circle" << std::endl;
+    }
+};
+
+class Rectangle : public Shape {
+public:
+    void draw() const override {
+        std::cout << "Drawing a Rectangle" << std::endl;
+    }
+};
+
+int main() {
+    Circle c;
+    Rectangle r;
+
+    c.draw();
+    r.draw();
+
+    return 0;
+}
+Output:
+Drawing a Circle
+Drawing a Rectangle
+94. Abstract Base Class with Multiple Derived Classes and Function Overriding
+
+// 94. Abstract base class with multiple derived classes and function overriding
+
+#include <iostream>
+
+class Shape {
+public:
+    virtual void draw() const = 0; // Pure virtual function
+    virtual ~Shape() {} // Virtual destructor
+};
+
+class Circle : public Shape {
+public:
+    void draw() const override {
+        std::cout << "Drawing a Circle" << std::endl;
+    }
+};
+
+class Rectangle : public Shape {
+public:
+    void draw() const override {
+        std::cout << "Drawing a Rectangle" << std::endl;
+    }
+};
+
+int main() {
+    Circle c;
+    Rectangle r;
+
+    c.draw();
+    r.draw();
+
+    return 0;
+}
+Output:
+Drawing a Circle
+Drawing a Rectangle
+95. Abstract Base Class with Multiple Derived Classes and Function Overriding
+// 95. Abstract base class with multiple derived classes and function overriding
+
+#include <iostream>
+
+class Shape {
+public:
+    virtual void draw() const = 0; // Pure virtual function
+    virtual ~Shape() {} // Virtual destructor
+};
+
+class Circle : public Shape {
+public:
+    void draw() const override {
+        std::cout << "Drawing a Circle" << std::endl;
+    }
+};
+
+class Rectangle : public Shape {
+public:
+    void draw() const override {
+        std::cout << "Drawing a Rectangle" << std::endl;
+    }
+};
+
+int main() {
+    Circle c;
+    Rectangle r;
+
+    c.draw();
+    r.draw();
+
+    return 0;
+}
+Output:
+Drawing a Circle
+Drawing a Rectangle
+96. Abstract Base Class with Multiple Derived Classes and Function Overriding
+cpp
+Copy
+Edit
+// 96. Abstract base class with multiple derived classes and function overriding
+
+#include <iostream>
+
+class Shape {
+public:
+    virtual void draw() const = 0; // Pure virtual function
+    virtual ~Shape() {} // Virtual destructor
+};
+
+class Circle : public Shape {
+public:
+    void draw() const override {
+        std::cout << "Drawing a Circle" << std::endl;
+    }
+};
+
+class Rectangle : public Shape {
+public:
+    void draw() const override {
+        std::cout << "Drawing a Rectangle" << std::endl;
+    }
+};
+
+int main() {
+    Circle c;
+    Rectangle r;
+
+    c.draw();
+    r.draw();
+
+    return 0;
+}
+Output:
+Drawing a Circle
+Drawing a Rectangle
+
+Abstract Base Class with Multiple Derived Classes and Function Overriding
+// 97. Abstract base class with multiple derived classes and function overriding
+
+#include <iostream>
+
+class Shape {
+public:
+    virtual void draw() const = 0; // Pure virtual function
+    virtual ~Shape() {} // Virtual destructor
+};
+
+class Circle : public Shape {
+public:
+    void draw() const override {
+        std::cout << "Drawing a Circle" << std::endl;
+    }
+};
+
+class Rectangle : public Shape {
+public:
+    void draw() const override {
+        std::cout << "Drawing a Rectangle" << std::endl;
+    }
+};
+
+int main() {
+    Circle c;
+    Rectangle r;
+
+    c.draw();
+    r.draw();
+
+    return 0;
+}
+Output:
+Drawing a Circle
+Drawing a Rectangle
+
+98. Abstract Base Class with Multiple Derived Classes and Function Overriding
+
+// 98. Abstract base class with multiple derived classes and function overriding
+
+#include <iostream>
+
+class Shape {
+public:
+    virtual void draw() const = 0; // Pure virtual function
+    virtual ~Shape() {} // Virtual destructor
+};
+
+class Circle : public Shape {
+public:
+    void draw() const override {
+        std::cout << "Drawing a Circle" << std::endl;
+    }
+};
+
+class Rectangle : public Shape {
+public:
+    void draw() const override {
+        std::cout << "Drawing a Rectangle" << std::endl;
+    }
+};
+
+int main() {
+    Circle c;
+    Rectangle r;
+
+    c.draw();
+    r.draw();
+
+    return 0;
+}
+Output:
+Drawing a Circle
+Drawing a Rectangle
